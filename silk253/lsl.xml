@@ -1,0 +1,59 @@
+<Silk>
+  <Prefixes>
+    <Prefix id="rdf" namespace="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix id="rdfs" namespace="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix id="owl" namespace="http://www.w3.org/2002/07/owl#"/>
+  </Prefixes>
+  <DataSources>
+    <DataSource id="agrovoc" type="file">
+      <Param name="file" value="agrovoc.rdf"/>
+      <Param name="format" value="RDF/XML"/>
+    </DataSource>
+    <DataSource id="text" type="file">
+      <Param name="file" value="output.nt"/>
+      <Param name="format" value="N-TRIPLE"/>
+    </DataSource>
+  </DataSources>
+  <Interlinks>
+    <Interlink id="linkIt">
+      <LinkType>owl:sameAs</LinkType>
+      <SourceDataset dataSource="agrovoc" var="a">
+        <RestrictTo> </RestrictTo>
+      </SourceDataset>
+      <TargetDataset dataSource="text" var="b">
+        <RestrictTo> </RestrictTo>
+      </TargetDataset>
+      <LinkageRule>
+        <Aggregate id="unnamed_10" required="false" weight="1" type="max">
+          <Compare id="unnamed_5" required="false" weight="1" metric="equality" threshold="0.1">
+            <TransformInput id="unnamed_4" function="capitalize">
+              <Input id="unnamed_11" path="?b/&lt;http://www.w3.org/2004/02/skos/core#label&gt;"/>
+              <Param name="allWords" value="false"/>
+            </TransformInput>
+            <TransformInput id="unnamed_8" function="tokenize">
+              <Input id="unnamed_12" path="?a/&lt;http://www.w3.org/2004/02/skos/core#altLabel&gt;"/>
+              <Param name="regex" value="\s"/>
+            </TransformInput>
+          </Compare>
+          <Compare id="unnamed_6" required="false" weight="2" metric="equality" threshold="0.1">
+            <TransformInput id="unnamed_3" function="capitalize">
+              <Input id="unnamed_1" path="?b/&lt;http://www.w3.org/2004/02/skos/core#label&gt;"/>
+              <Param name="allWords" value="false"/>
+            </TransformInput>
+            <TransformInput id="unnamed_7" function="tokenize">
+              <Input id="unnamed_2" path="?a/&lt;http://www.w3.org/2004/02/skos/core#prefLabel&gt;"/>
+              <Param name="regex" value="\s"/>
+            </TransformInput>
+          </Compare>
+        </Aggregate>
+      </LinkageRule>
+      <Filter threshold="0.9" />
+      <Outputs>
+        <Output type="file" minConfidence="0.95">
+          <Param name="file" value="accepted_links.nt" />
+          <Param name="format" value="ntriples" />
+        </Output>
+      </Outputs>
+    </Interlink>
+  </Interlinks>
+</Silk>

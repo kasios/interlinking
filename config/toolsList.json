@@ -1,0 +1,52 @@
+{
+    "tools": [
+        {
+            "id": "kea-agrovoc",
+            "inputs-supported":[
+                {
+                    "id": "input1"
+                },
+                {
+                    "id": "input2"
+                }
+            ],
+            "specific-fields": [
+                {
+                    "id": "response1",
+                    "format-specific-field": [
+                        {
+                            "format": "0-1F"
+                        },
+                        {
+                            "format": "sffs"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "silk-agrovoc",
+            "inputs-supported":[
+                {
+                    "id": "input1"
+                },
+                {
+                    "id": "input2"
+                }
+            ],
+            "specific-fields": [
+                {
+                    "id": "response1",
+                    "format-specific-field": [
+                        {
+                            "format": "0-1F"
+                        },
+                        {
+                            "format": "sffs"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

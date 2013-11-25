@@ -1,0 +1,8 @@
+{
+    "mimeTypes": [
+        {
+            "mimeId": "text/plain",
+            "desc": "File with text in UTF-8 format"
+        }
+    ]
+}
