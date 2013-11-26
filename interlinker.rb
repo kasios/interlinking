@@ -327,8 +327,7 @@ helpers do
         when "silk-agrovoc"
           tempFolder = createTempEnv()
           lsl = readTextFile(settings.startConfig["silk_path"]+"/lsl.xml")
-          writeTextFile(lsl.sub("output.nt", tempFolder+"/output.nt")
-            .sub("accepted_links.nt",tempFolder+"/accepted_links.nt"),
+          writeTextFile(lsl.sub("output.nt", tempFolder+"/output.nt").sub("accepted_links.nt",tempFolder+"/accepted_links.nt"),
               tempFolder+"/mylsl.xml")
           begin
             textToRDF(text,tempFolder)
